@@ -1,0 +1,15 @@
+import sympy as sp
+x,y,z,r,theta=sp.symbols('x y z r theta')
+#(a)
+integral1=sp.integrate(sp.integrate(sp.integrate(x*sp.exp(-y)*sp.cos(z),(x,0,1)),(y,0,1-x**2)),(z,3,4-x**2-y**2))
+print(f'6(a(i))',integral1)
+integral2=sp.integrate(sp.integrate((x*y)/(sp.sqrt(x**2+y**2+1)),(y,0,1)),(x,0,1))
+print(f'6(a(ii))',integral2)
+#(b)
+t=sp.symbols('t')
+surface_area=sp.integrate(sp.integrate(sp.sqrt(1+sp.diff(sp.sqrt(4-x**2),x)**2+sp.diff(sp.sqrt(4-x**2),y)**2),(y,0,4)),(x,0,1))
+print(f'surface area',surface_area)
+#(c)
+z=4-x**2-y**2
+volume=sp.integrate(sp.integrate(z.subs({x:r*sp.cos(theta)+1,y:r*sp.sin(theta)})*r,(r,0,1)),(theta,0,2*sp.pi))
+print(f'volume:',volume)
